@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>اسم المكان</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f5f7;--card:#fff;--ink:#12303a;--mute:#5d7480;--brand:#0f4c5c;--accent:#e09f3e;--line:#d9e2e7;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1b21;--card:#14282f;--ink:#e8f1f4;--mute:#97b0ba;--brand:#5fb3c6;--line:#264651;color-scheme:dark}}
+html{height:auto;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Cairo,Tahoma,Arial,sans-serif;line-height:1.7}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 48px}
+header{text-align:center;padding:28px 0 8px}
+.logo{width:88px;height:88px;border-radius:24px;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:38px;font-weight:800;margin:0 auto 12px}
+h1{margin:0;font-size:30px;font-weight:800}
+.tag{color:var(--mute);margin:4px 0 0}
+h2{font-size:20px;margin:36px 0 12px}
+.social{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.social a{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff;transition:transform .15s}
+.social a:hover,.social a:focus-visible{transform:scale(1.1)}
+.social svg{width:26px;height:26px;fill:#fff}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.svc b{display:block;font-size:17px}.svc span{color:var(--mute);font-size:14px}
+.pay{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.pay button{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:18px 10px;font:inherit;color:var(--ink);cursor:pointer;display:grid;gap:8px;justify-items:center}
+.pay button:hover,.pay button:focus-visible{border-color:var(--accent)}
+.pay i{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;color:#fff;font-style:normal;font-weight:800;font-size:22px}
+dialog{border:0;border-radius:18px;padding:24px;width:min(92vw,380px);background:var(--card);color:var(--ink);text-align:center}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+.num{direction:ltr;font-size:26px;font-weight:800;letter-spacing:1px;margin:10px 0;word-break:break-all}
+.btn{display:block;width:100%;padding:12px;border-radius:12px;border:0;font:inherit;font-weight:600;cursor:pointer;margin-top:8px;text-decoration:none;text-align:center}
+.b1{background:var(--brand);color:#fff}.b2{background:transparent;color:var(--mute);border:1px solid var(--line)}
+:root[data-theme="dark"]{--bg:#0d1b21;--card:#14282f;--ink:#e8f1f4;--mute:#97b0ba;--brand:#5fb3c6;--line:#264651}
+footer{text-align:center;color:var(--mute);font-size:14px;margin-top:40px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo" id="logoLetter">م</div>
+  <h1 id="name">اسم المكان</h1>
+  <p class="tag">أهلاً بيكم، تابعونا وادفعوا بسهولة</p>
+  <nav class="social" aria-label="مواقع التواصل" id="social"></nav>
+</header>
+
+<!-- <h2>خدماتنا</h2>
+<div class="services">
+  <div class="svc"><b>الخدمة الأولى</b><span>وصف قصير للخدمة والسعر</span></div>
+  <div class="svc"><b>الخدمة الثانية</b><span>وصف قصير للخدمة والسعر</span></div>
+  <div class="svc"><b>الخدمة الثالثة</b><span>وصف قصير للخدمة والسعر</span></div>
+  <div class="svc"><b>الخدمة الرابعة</b><span>وصف قصير للخدمة والسعر</span></div>
+</div> -->
+
+<h2>طرق الدفع</h2>
+<p style="color:var(--mute);margin:0 0 12px">دوس على وسيلة الدفع هيظهرلك الرقم اللي تحوّل عليه.</p>
+<div class="pay" id="pay"></div>
+
+<footer>العنوان: اكتب عنوان المكان هنا · مواعيد العمل: من 10 ص إلى 10 م</footer>
+</div>
+
+<dialog id="dlg">
+  <h3 id="dTitle" style="margin:0 0 4px"></h3>
+  <div style="color:var(--mute)">حوّل على الرقم ده:</div>
+  <div class="num" id="dNum"></div>
+  <div id="dHolder" style="color:var(--mute);font-size:14px"></div>
+  <button class="btn b1" id="copy">نسخ الرقم</button>
+  <a class="btn b1" id="open" target="_blank" rel="noopener" style="background:var(--accent);color:#1a1a1a">فتح التطبيق</a>
+  <button class="btn b2" id="close">إغلاق</button>
+</dialog>
+
+<script>
+// ====== عدّل البيانات هنا ======
+const PLACE = "اسم المكان";
+const SOCIAL = [
+  {n:"فيسبوك", url:"https://facebook.com/اسم_الصفحة", c:"#1877f2", svg:'<path d="M14 8h3V4h-3c-2.8 0-4.5 1.7-4.5 4.5V11H7v4h2.5v6h4v-6H16l.6-4h-3.1V8.7c0-.5.2-.7.5-.7z"/>'},
+  {n:"يوتيوب", url:"https://youtube.com/@اسم_القناة", c:"#e62117", svg:'<path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5 3z"/>'},
+  {n:"انستجرام", url:"https://instagram.com/اسم_الحساب", c:"#d6249f", svg:'<path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm0 2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm5 3a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm4.8-3.3a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>'},
+  {n:"واتساب", url:"https://wa.me/201273050924", c:"#25a244", svg:'<path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.200-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.300c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.200.1.400 0 .5l-.4.600-.4.400c-.1.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.100 1 2.100 1.300 2.400 1.500.3.100.5.100.6-.1l.9-1.100c.2-.3.400-.2.600-.1l1.900.9c.3.100.5.200.5.300.1.200.1.700-.1 1.300z"/>'}
+];
+const PAY = [
+  {n:"انستا باي", c:"#6c2c91", ic:"IP", num:"islam.mohamed1003@instapay", holder:"باسم: اكتب اسم صاحب الحساب",
+   open:"https://ipn.eg/S/islam.mohamed1003/instapay/15UeGH"},      // ضع رابط InstaPay الخاص بك
+  {n:"فودافون كاش", c:"#e60000", ic:"V", num:"01273050924", holder:"محفظة فودافون كاش", open:"tel:*9*7#"},
+  {n:"أورانج كاش", c:"#ff7900", ic:"O", num:"01273050924", holder:"محفظة أورانج", open:"tel:01200000000"},
+  {n:"اتصالات كاش", c:"#e4002b", ic:"E", num:"01273050924", holder:"محفظة اتصالات", open:"tel:01100000000"}
+];
+// ==============================
+document.title = PLACE;
+document.getElementById("name").textContent = PLACE;
+document.getElementById("logoLetter").textContent = PLACE.trim().charAt(0);
+
+document.getElementById("social").innerHTML = SOCIAL.map(s =>
+  `<a href="${s.url}" target="_blank" rel="noopener" aria-label="${s.n}" title="${s.n}" style="background:${s.c}"><svg viewBox="0 0 24 24" aria-hidden="true">${s.svg}</svg></a>`).join("");
+
+const payBox = document.getElementById("pay");
+payBox.innerHTML = PAY.map((p,i) =>
+  `<button data-i="${i}"><i style="background:${p.c}">${p.ic}</i><span>${p.n}</span></button>`).join("");
+
+const dlg = document.getElementById("dlg"), copyBtn = document.getElementById("copy");
+let cur;
+payBox.addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  cur = PAY[b.dataset.i];
+  dTitle.textContent = cur.n; dNum.textContent = cur.num; dHolder.textContent = cur.holder;
+  open_.href = cur.open; copyBtn.textContent = "نسخ الرقم";
+  dlg.showModal();
+});
+const open_ = document.getElementById("open");
+copyBtn.onclick = async () => {
+  try { await navigator.clipboard.writeText(cur.num); copyBtn.textContent = "تم النسخ ✓"; }
+  catch(e){ copyBtn.textContent = "انسخ الرقم يدوياً"; }
+};
+document.getElementById("close").onclick = () => dlg.close();
+dlg.addEventListener("click", e => { if(e.target === dlg) dlg.close(); });
+</script>
+</body>
+</html>
